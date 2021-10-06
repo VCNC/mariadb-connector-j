@@ -124,6 +124,7 @@ public class Options implements Cloneable {
   public int failoverLoopRetries = 120;
   public boolean allowMasterDownConnection;
   public String galeraAllowedState;
+  public boolean vcncUseAuroraWriterOnly;
 
   // Pool options
   public boolean pool;

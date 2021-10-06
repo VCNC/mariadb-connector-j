@@ -690,6 +690,9 @@ public class MastersReplicasListener extends AbstractMastersReplicasListener {
           return;
         }
         currentReadOnlyAsked = mustBeReadOnly;
+        if (urlParser.getOptions().vcncUseAuroraWriterOnly) {
+          return;
+        }
         if (currentReadOnlyAsked) {
           if (currentProtocol == null) {
             // switching to secondary connection
