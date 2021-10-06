@@ -60,7 +60,7 @@
   <artifactId>mariadb-java-client</artifactId>
   <packaging>jar</packaging>
   <name>mariadb-java-client</name>
-  <version>2.7.4</version>
+  <version>2.7.4-VCNC</version>
   <description>JDBC driver for MariaDB and MySQL</description>
   <url>https://mariadb.com/kb/en/mariadb/about-mariadb-connector-j/</url>
 
@@ -108,6 +108,11 @@
       <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
+    <repository>
+      <id>github</id>
+      <name>GitHub VCNC Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/vcnc/mariadb-connector-j</url>
+    </repository>
   </distributionManagement>
 
   <build>
@@ -201,37 +206,37 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.8</version>
-        <extensions>true</extensions>
-        <executions>
-          <execution>
-            <phase>deploy</phase>
-          </execution>
-        </executions>
-        <configuration>
-          <serverId>ossrh</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <autoReleaseAfterClose>false</autoReleaseAfterClose>
-        </configuration>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.sonatype.plugins</groupId>-->
+<!--        <artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--        <version>1.6.8</version>-->
+<!--        <extensions>true</extensions>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>deploy</phase>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--        <configuration>-->
+<!--          <serverId>ossrh</serverId>-->
+<!--          <nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
+<!--          <autoReleaseAfterClose>false</autoReleaseAfterClose>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
 
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.6</version>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-gpg-plugin</artifactId>-->
+<!--        <version>1.6</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>verify</phase>-->
+<!--            <goals>-->
+<!--              <goal>sign</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
       <plugin>
         <groupId>com.coveo</groupId>
         <artifactId>fmt-maven-plugin</artifactId>
