@@ -593,6 +593,7 @@ public enum DefaultOptions {
           + " ensure Galera server state \"wsrep_local_state\" correspond to allowed values (separated by comma). "
           + "Example \"4,5\", recommended is \"4\". see galera state to know more.",
       false),
+  VCNC_USE_AURORA_WRITER_ONLY("vcncUseAuroraWriterOnly", Boolean.FALSE, "2.7.4-VCNC", "", false),
   USE_AFFECTED_ROWS(
       "useAffectedRows",
       Boolean.FALSE,
