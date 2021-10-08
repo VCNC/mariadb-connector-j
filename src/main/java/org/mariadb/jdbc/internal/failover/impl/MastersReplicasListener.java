@@ -681,6 +681,9 @@ public class MastersReplicasListener extends AbstractMastersReplicasListener {
    */
   @Override
   public void switchReadOnlyConnection(Boolean mustBeReadOnly) throws SQLException {
+    if (urlParser.getOptions().vcncUseAuroraWriterOnly) {
+      return;
+    }
     checkWaitingConnection();
     if (currentReadOnlyAsked != mustBeReadOnly) {
       proxy.lock.lock();
@@ -690,9 +693,6 @@ public class MastersReplicasListener extends AbstractMastersReplicasListener {
           return;
         }
         currentReadOnlyAsked = mustBeReadOnly;
-        if (urlParser.getOptions().vcncUseAuroraWriterOnly) {
-          return;
-        }
         if (currentReadOnlyAsked) {
           if (currentProtocol == null) {
             // switching to secondary connection

@@ -130,7 +130,7 @@ public class AuroraProtocol extends MastersReplicasProtocol {
       throws SQLException {
 
     SearchFilter searchFilter = initialSearchFilter;
-    AuroraProtocol protocol;
+    AuroraProtocol protocol = null;
     Deque<HostAddress> loopAddresses = new ArrayDeque<>(addresses);
     if (loopAddresses.isEmpty()) {
       resetHostList(listener, loopAddresses);
@@ -141,6 +141,9 @@ public class AuroraProtocol extends MastersReplicasProtocol {
     HostAddress probableMasterHost = null;
     boolean firstLoop = true;
     while (!loopAddresses.isEmpty() || (!searchFilter.isFailoverLoop() && maxConnectionTry > 0)) {
+      if (protocol != null && protocol.isConnected()) {
+        protocol.close();
+      }
       protocol = getNewProtocol(listener.getProxy(), globalInfo, listener.getUrlParser());
 
       if (listener.isExplicitClosed()
