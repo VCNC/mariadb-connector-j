@@ -352,6 +352,13 @@ public class AuroraProtocol extends MastersReplicasProtocol {
 
   @Override
   public boolean isMasterConnection() {
+    if (urlParser.getOptions().vcncUseAuroraReaderOnly) {
+      // A master connection is required, but when using read-only endpoint, only non-master
+      // connection exists.
+      // When using read-only endpoint, report reader instance as master connection.
+      // (also report writer instance as non-master, vice versa)
+      return !this.masterConnection;
+    }
     return this.masterConnection;
   }
 
@@ -423,7 +430,9 @@ public class AuroraProtocol extends MastersReplicasProtocol {
       }
 
       this.readOnly = !this.masterConnection;
-      return this.masterConnection;
+      // Should not return this.masterConnection as-is because isMasterConnection() may report
+      // different result
+      return isMasterConnection();
 
     } catch (SQLException sqle) {
       throw new SQLException(

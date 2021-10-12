@@ -125,6 +125,7 @@ public class Options implements Cloneable {
   public boolean allowMasterDownConnection;
   public String galeraAllowedState;
   public boolean vcncUseAuroraWriterOnly;
+  public boolean vcncUseAuroraReaderOnly;
 
   // Pool options
   public boolean pool;

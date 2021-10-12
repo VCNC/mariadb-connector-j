@@ -384,6 +384,7 @@ public class AuroraListener extends MastersReplicasListener {
    */
   private HostAddress searchForMasterHostAddress(Protocol protocol, List<HostAddress> loopAddress)
       throws SQLException {
+    // TODO: consider vcncUseAuroraReaderOnly option
     String masterHostName;
     proxy.lock.lock();
     try {

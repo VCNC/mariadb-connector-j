@@ -594,6 +594,7 @@ public enum DefaultOptions {
           + "Example \"4,5\", recommended is \"4\". see galera state to know more.",
       false),
   VCNC_USE_AURORA_WRITER_ONLY("vcncUseAuroraWriterOnly", Boolean.FALSE, "2.7.4-VCNC", "", false),
+  VCNC_USE_AURORA_READER_ONLY("vcncUseAuroraReaderOnly", Boolean.FALSE, "2.7.4-VCNC", "", false),
   USE_AFFECTED_ROWS(
       "useAffectedRows",
       Boolean.FALSE,
